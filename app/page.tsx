@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormField } from "@/components/ui/form";
+import Footer from "./_components/Footer";
 
 /*let regex = new RegExp(
   '/^{(("[a-zA-Z0-9]+":"[a-zA-Z0-9]+")(,"[a-zA-Z0-9]+":"[a-zA-Z0-9]+")*)?}$/'
@@ -38,7 +39,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex h-full flex-col items-center gap-10 p-20">
+    <>
+      <main className="flex h-full flex-col items-center gap-10 p-20">
       <h1 className="text-4xl font-bold flex items-center gap-2">
         Json <FileJson className="size-12" /> Tamer
       </h1>
@@ -72,5 +74,7 @@ export default function Home() {
         </form>
       </Form>
     </main>
+    <Footer />
+    </>
   );
 }
