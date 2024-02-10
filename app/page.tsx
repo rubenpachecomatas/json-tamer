@@ -41,40 +41,40 @@ export default function Home() {
   return (
     <>
       <main className="flex h-full flex-col items-center gap-10 p-20">
-      <h1 className="text-4xl font-bold flex items-center gap-2">
-        Json <FileJson className="size-12" /> Tamer
-      </h1>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="flex flex-col justify-btween gap-4 max-w-lg size-full"
-        >
-          <FormField
-            control={form.control}
-            name="json"
-            render={({ field }) => (
-              <Textarea
-                {...field}
-                className="size-full"
-                placeholder="Enter your json"
-              />
-            )}
-          />
-          <div>
-            <Button type="submit" className="w-full" size="lg">
-              Tame that json!
-            </Button>
-          </div>
-          <Textarea
-            className="size-full"
-            placeholder="The formatted json will appear here"
-            value={formattedJson}
-            onChange={() => null}
-          />
-        </form>
-      </Form>
-    </main>
-    <Footer />
+        <h1 className="text-4xl font-bold flex items-center gap-2">
+          Json <FileJson className="size-12" /> Tamer
+        </h1>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(handleSubmit)}
+            className="flex flex-col justify-btween gap-4 max-w-lg size-full"
+          >
+            <FormField
+              control={form.control}
+              name="json"
+              render={({ field }) => (
+                <Textarea
+                  {...field}
+                  className="size-full"
+                  placeholder="Enter your json"
+                />
+              )}
+            />
+            <div>
+              <Button type="submit" className="w-full" size="lg">
+                Tame that json!
+              </Button>
+            </div>
+            <Textarea
+              className="size-full"
+              placeholder="The formatted json will appear here"
+              value={formattedJson}
+              onChange={() => null}
+            />
+          </form>
+        </Form>
+      </main>
+      <Footer />
     </>
   );
 }
