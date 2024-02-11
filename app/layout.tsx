@@ -3,6 +3,7 @@ import { Onest } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./_components/Providers";
+import { Analytics } from '@vercel/analytics/react';
 
 const onest = Onest({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         )}
       >
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
