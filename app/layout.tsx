@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Providers } from "./_components/Providers";
 
 const onest = Onest({ subsets: ["latin"] });
 
@@ -26,7 +27,7 @@ export default function RootLayout({
           onest.className
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
