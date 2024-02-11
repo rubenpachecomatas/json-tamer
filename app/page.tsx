@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex justify-center size-full pb-10">
+      <main className="flex justify-center size-full pb-16">
         <ThemeSwitch />
         <JsonForm />
       </main>

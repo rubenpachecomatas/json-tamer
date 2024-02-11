@@ -4,19 +4,22 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  json: z.string().refine(
-    (value) => {
-      try {
-        JSON.stringify(JSON.parse(value));
-      } catch (error) {
-        return false;
+  json: z
+    .string()
+    .min(1, "You must enter a json string first!")
+    .refine(
+      (value) => {
+        try {
+          JSON.stringify(JSON.parse(value));
+        } catch (error) {
+          return false;
+        }
+        return true;
+      },
+      {
+        message: "It looks like an invalid JSON string",
       }
-      return true;
-    },
-    {
-      message: "Invalid JSON",
-    }
-  ),
+    ),
 });
 
 const useJsonForm = () => {

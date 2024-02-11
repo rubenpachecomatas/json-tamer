@@ -1,6 +1,5 @@
 "use client";
 
-import { Switch } from "@/components/ui/switch";
 import { Moon, Sun } from "lucide-react";
 import useThemeSwitch from "./hooks/useThemeSwitch";
 import { Button } from "@/components/ui/button";
