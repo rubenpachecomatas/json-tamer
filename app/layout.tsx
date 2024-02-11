@@ -24,7 +24,7 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          "h-screen flex flex-col items-center gap-10 pb-20 p-10 sm:p-20",
+          "h-svh flex flex-col items-center gap-10 pb-20 p-10 sm:p-20",
           onest.className
         )}
       >
