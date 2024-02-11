@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 const onest = Onest({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Json Tamer",
-  description: "Format your json at any time",
+  title: "JSON Tamer",
+  description: "Format your JSON at any time",
 };
 
 export default function RootLayout({
@@ -17,7 +17,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("h-screen", onest.className)}>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon.svg" sizes="any" />
+      </head>
+      <body
+        className={cn(
+          "h-screen flex flex-col items-center gap-10 pb-20 p-10 sm:p-20",
+          onest.className
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
