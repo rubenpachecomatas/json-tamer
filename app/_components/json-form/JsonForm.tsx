@@ -8,13 +8,11 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
 const JsonForm = () => {
-  const { form, formattedJson, handleSubmit } = useJsonForm();
+  const { form, handleFormat, handleMinify, json } = useJsonForm();
+
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="flex flex-col justify-btween gap-4 max-w-lg size-full"
-      >
+      <form className="flex flex-col justify-btween gap-4 max-w-lg size-full">
         <FormField
           control={form.control}
           name="json"
@@ -29,21 +27,37 @@ const JsonForm = () => {
                 <Alert className="flex flex-col gap-1">
                   <AlertCircle className="size-5" />
                   <AlertTitle className="p-0 m-0">Ooops!</AlertTitle>
-                  <AlertDescription>{formState.errors.json?.message}</AlertDescription>
+                  <AlertDescription>
+                    {formState.errors.json?.message}
+                  </AlertDescription>
                 </Alert>
               )}
             </FormItem>
           )}
         />
-        <div>
-          <Button type="submit" className="w-full" size="lg">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button
+            name="format-btn"
+            type="button"
+            className="w-full"
+            onClick={form.handleSubmit(handleFormat)}
+          >
             Format JSON
+          </Button>
+          <Button
+            name="minify-btn"
+            type="button"
+            className="w-full"
+            onClick={form.handleSubmit(handleMinify)}
+            variant="secondary"
+          >
+            Minify JSON
           </Button>
         </div>
         <Textarea
           className="size-full"
           placeholder="The formatted json will appear here"
-          value={formattedJson}
+          value={json}
           onChange={() => null}
         />
       </form>

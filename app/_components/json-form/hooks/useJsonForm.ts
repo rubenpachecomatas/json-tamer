@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { formatJson, minifyJson } from "../utils/JsonForm.utils";
 
 const formSchema = z.object({
   json: z
@@ -23,13 +24,7 @@ const formSchema = z.object({
 });
 
 const useJsonForm = () => {
-  const [formattedJson, setFormattedJson] = useState("");
-
-  const formatJson = (json: string) => {
-    const formatted = JSON.stringify(JSON.parse(json), null, 4);
-
-    setFormattedJson(formatted);
-  };
+  const [json, setJson] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,13 +33,17 @@ const useJsonForm = () => {
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) =>
-    formatJson(values.json);
+  const handleFormat = (values: z.infer<typeof formSchema>) =>
+    setJson(formatJson(values.json));
+
+  const handleMinify = (values: z.infer<typeof formSchema>) =>
+    setJson(minifyJson(values.json));
 
   return {
     form,
-    formattedJson,
-    handleSubmit,
+    handleFormat,
+    handleMinify,
+    json,
   };
 };
 
